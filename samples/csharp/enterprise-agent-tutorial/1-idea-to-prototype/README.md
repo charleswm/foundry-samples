@@ -19,6 +19,9 @@ This C# implementation demonstrates building and evaluating an enterprise agent 
 ├── Evaluate/                    # Evaluation project
 │   ├── Program.cs               # Batch evaluation with keyword matching
 │   └── Evaluate.csproj
+├── Cleanup/                     # Resource cleanup project
+│   ├── Program.cs               # Cleanup script for agents and conversations
+│   └── Cleanup.csproj
 ├── shared/                      # Shared configuration files
 │   ├── .env                     # Environment variables (user-specific)
 │   ├── .env.template            # Environment variables template
@@ -63,6 +66,27 @@ dotnet run
 ```
 
 This runs batch evaluation against 4 test questions and generates `evaluation_results.json`.
+
+### 4. Cleanup Resources
+
+After running samples or evaluations, clean up created resources:
+
+```bash
+cd ../Cleanup
+dotnet restore
+dotnet run
+
+# Clean up a specific agent version
+dotnet run -- --agent "Evaluation Agent" --version 1
+
+# Clean up all versions of an agent
+dotnet run -- --agent "Evaluation Agent" --all
+
+# Clean up a conversation
+dotnet run -- --conversation <conversation_id>
+```
+
+The cleanup script will delete agent versions and conversations to prevent accumulation of unused resources.
 
 ## Key Features
 

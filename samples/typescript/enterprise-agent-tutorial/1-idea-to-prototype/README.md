@@ -79,6 +79,23 @@ This will:
 3. Validate responses based on expected data sources
 4. Generate an `evaluation_results.json` file
 
+### Cleanup Resources
+
+After running demos or evaluations, clean up created resources:
+
+```bash
+# Clean up a specific agent version and conversation
+npm run cleanup -- --agent workplace-assistant --version 1 --conversation <conversation_id>
+
+# Clean up all versions of an agent
+npm run cleanup -- --agent workplace-assistant --all
+
+# Clean up only a conversation
+npm run cleanup -- --conversation <conversation_id>
+```
+
+The cleanup script will delete agent versions and conversations to prevent accumulation of unused resources.
+
 ### Development Mode
 
 For development with automatic rebuild:
