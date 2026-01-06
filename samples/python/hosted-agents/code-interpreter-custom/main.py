@@ -54,7 +54,6 @@ always print a data URI with the contents. NEVER provide a path to a file in the
     )
     print(f"[Response {response.id}]: {response.output_text}")
 
-    # Clean up resources by deleting the agent version
-    # This prevents accumulation of unused agent versions in your project
-    project_client.agents.delete_version(agent_name=agent.name, agent_version=agent.version)
-    print("Agent deleted")
+    print(f"\n✅ Demo completed successfully!")
+    print(f"ℹ️  Agent '{agent.name}' version '{agent.version}' was created")
+    print(f"ℹ️  To clean up resources, run: python cleanup.py {agent.name} {agent.version}")

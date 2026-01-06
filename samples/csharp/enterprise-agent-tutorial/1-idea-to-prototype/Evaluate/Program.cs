@@ -164,9 +164,6 @@ Answer questions using available tools and provide specific, detailed responses.
         }
         // </run_batch_evaluation>
 
-        // Cleanup - Note: In SDK 2.0, agents are versioned and managed differently
-        // await client.DeleteAgentAsync(agent.Name); // Uncomment if you want to delete
-
         // <evaluation_results>
         // NOTE: This code is a non-runnable snippet of the larger sample code from which it is taken.
         var summary = new
@@ -185,6 +182,8 @@ Answer questions using available tools and provide specific, detailed responses.
         Console.WriteLine($"   Passed: {summary.passed}");
         Console.WriteLine($"   Failed: {summary.failed}");
         Console.WriteLine($"\n📄 Results saved to evaluation_results.json");
+        Console.WriteLine($"\nℹ️  Agent '{agent.Name}' version '{agent.Version}' was created");
+        Console.WriteLine($"ℹ️  To clean up resources, run: dotnet run --project ../Cleanup -- --agent \"{agent.Name}\" --version {agent.Version}");
         // </evaluation_results>
     }
 }

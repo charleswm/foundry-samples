@@ -7,6 +7,7 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "evaluate": "node dist/evaluate.js",
+    "cleanup": "node dist/cleanup.js",
     "dev": "tsc && node dist/main.js",
     "clean": "rimraf dist/"
   },

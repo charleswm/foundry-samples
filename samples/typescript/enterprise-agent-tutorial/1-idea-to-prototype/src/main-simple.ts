@@ -86,12 +86,10 @@ async function main(): Promise<void> {
     console.log(response.output_text);
     console.log("-".repeat(70));
 
-    // Cleanup
-    console.log("\n🧹 Cleaning up...");
-    await openAIClient.conversations.delete(conversation.id);
-    await agentsClient.deleteVersion(agent.name!, agent.version!);
-    
-    console.log("✅ Demo completed successfully!");
+    console.log("\n✅ Demo completed successfully!");
+    console.log(`ℹ️  Agent '${agent.name}' version '${agent.version}' was created`);
+    console.log(`ℹ️  Conversation '${conversation.id}' was created`);
+    console.log(`ℹ️  To clean up resources, run: npm run cleanup -- --agent ${agent.name} --version ${agent.version} --conversation ${conversation.id}`);
   } catch (error: any) {
     console.error(`\n❌ Error: ${error.message}`);
     console.error("Please check your .env configuration and ensure:");

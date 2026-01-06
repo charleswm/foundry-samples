@@ -60,6 +60,23 @@ python3 -m venv .venv
 ./.venv/bin/python3 ./main.py
 ```
 
+### Cleanup Resources
+
+After running the sample, you can clean up the created resources:
+
+```console
+# Clean up a specific agent version
+python cleanup.py MyAgent <version>
+
+# Clean up all versions of an agent
+python cleanup.py MyAgent --all
+
+# Using uv
+uv run ./cleanup.py MyAgent --all
+```
+
+The cleanup script will delete agent versions to prevent accumulation of unused resources.
+
 ## Limitations
 
 File input/output and use of file stores are not directly supported in APIs, so you must use URLs (such as data URLs for small files and Azure Blob Service SAS URLs for large ones) to get data in and out.
