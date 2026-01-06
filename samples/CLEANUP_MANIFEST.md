@@ -150,6 +150,107 @@ Some resources you may want to keep:
 - If a script fails mid-cleanup, it's safe to run again
 - Scripts are idempotent and skip already-deleted resources
 
+---
+
+## Samples-Classic Cleanup Utilities
+
+### Overview
+
+The `samples-classic` directory contains many samples using the classic agents API. Due to the high volume of samples (~59 files with cleanup code), centralized cleanup utilities have been created.
+
+### Centralized Cleanup Scripts
+
+#### Python Cleanup Utility
+**Location**: `samples-classic/python/cleanup.py`
+
+**Resources Cleaned**:
+- Agents (classic API)
+- Threads
+- Vector stores
+- Files
+
+**Usage**:
+```bash
+# Clean up specific resources
+python cleanup.py --agent asst_abc123
+python cleanup.py --thread thread_xyz789
+python cleanup.py --agent <id> --thread <id> --file <id>
+
+# List all agents
+python cleanup.py --list-agents
+
+# Clean up all agents (interactive)
+python cleanup.py --clean-all
+```
+
+#### TypeScript/JavaScript Cleanup Utility
+**Location**: `samples-classic/javascript/cleanup.js`
+
+**Resources Cleaned**:
+- Agents (classic API)
+- Threads
+- Vector stores
+- Files
+
+**Usage**:
+```bash
+# Clean up specific resources
+node cleanup.js --agent asst_abc123
+node cleanup.js --thread thread_xyz789
+
+# List all agents
+node cleanup.js --list-agents
+
+# Clean up all agents (interactive)
+node cleanup.js --clean-all
+```
+
+#### C# Cleanup Utility
+**Location**: `samples-classic/csharp/Cleanup/`
+
+**Resources Cleaned**:
+- Agents (classic API)
+- Threads
+- Vector stores
+- Files
+
+**Usage**:
+```bash
+# Restore dependencies first
+cd samples-classic/csharp/Cleanup
+dotnet restore
+
+# Clean up specific resources
+dotnet run -- --agent asst_abc123
+dotnet run -- --thread thread_xyz789
+
+# List all agents
+dotnet run -- --list-agents
+
+# Clean up all agents (interactive)
+dotnet run -- --clean-all
+```
+
+### Samples Using Classic Cleanup Utilities
+
+The centralized cleanup utilities support ~59 sample files:
+- **Python**: ~28 files (quickstart, getting-started-agents, 3p-tools, agent-client)
+- **C#**: ~29 files (quickstart, getting-started-agents with Async/Sync variants)
+- **TypeScript**: 1 file (quickstart)
+- **JavaScript**: 1 file (quickstart)
+
+### Why Centralized for Samples-Classic?
+
+Unlike the modern samples in `./samples`, the classic samples:
+1. Use the older classic agents API (`delete_agent()` vs `delete_version()`)
+2. Have many more samples (59 vs 3)
+3. Often demonstrate similar patterns across multiple files
+4. Would benefit from a unified cleanup approach
+
+For detailed instructions, see `samples-classic/CLEANUP_README.md`.
+
+---
+
 ## Future Enhancements
 
 Planned improvements to cleanup scripts:
